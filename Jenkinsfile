@@ -2,7 +2,7 @@ pipeline {
     agent {
         label 'AGENT-1'
     }
-
+    // Build
     stages{
         stage('build'){
             steps{
@@ -20,5 +20,21 @@ pipeline {
             }
         }
     }
+
+   
+   post {
+      always{
+        echo "I will always say hello"
+        deleteDir()
+      }
+      success{
+        echo "Hello Success"
+      }
+      failure{
+        echo "Hello Failure"
+      }
+
+    
+   } 
 
 }
